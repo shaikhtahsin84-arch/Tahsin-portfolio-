@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Font Faces ─── */
+/* Clash Display — from Fontshare CDN */
+@font-face {
+  font-family: 'Clash Display';
+  src: url('https://cdn.fontshare.com/wf/GKVLAYIKLDFLZE3RM6SFIIRPJQVTTSOW/DKDXJJZ7IES3DU5BWDVRDQGLPBM36Q4V/N4SKHV6URTQNFG3GF3PC4DIQMHHJSFVF.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('https://cdn.fontshare.com/wf/GKVLAYIKLDFLZE3RM6SFIIRPJQVTTSOW/3FHGWKXJDVDIFCL5PIOOWZ2DDQMQBCQX/BWSZYHOFWU72HTFUQWPQJQOITNWXC3IN.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* General Sans — from Fontshare CDN */
+@font-face {
+  font-family: 'General Sans';
+  src: url('https://cdn.fontshare.com/wf/GKVLAYIKLDFLZE3RM6SFIIRPJQVTTSOW/M54TLCAHX3U77SCZIZXQALXVPX2YBNQS/BGDVVUQFXV63ZTJY73CJDH4XSMCFWXHP.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('https://cdn.fontshare.com/wf/GKVLAYIKLDFLZE3RM6SFIIRPJQVTTSOW/GCR7HC3LJ3DLQX4OHWSQM7D23TRXDYUQ/QNZJK3YAXYPXRRTEPJ3QBOMRVEKUZNUW.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* JetBrains Mono — from Google Fonts */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── CSS Variables for Fonts ─── */
+:root {
+  --font-clash-display: 'Clash Display', sans-serif;
+  --font-general-sans: 'General Sans', sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', monospace;
+}
+
+/* ─── Base Styles ─── */
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg-primary text-crisp-white font-body text-body;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  a {
+    @apply text-electric-cyan transition-colors duration-200;
+  }
+
+  a:hover {
+    @apply text-crisp-white;
+  }
+
+  ::selection {
+    @apply bg-electric-cyan text-ink-navy;
+  }
+
+  /* Focus states for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-electric-cyan;
+  }
+}
+
+/* ─── Hairline Divider ─── */
+@layer components {
+  .hairline {
+    @apply h-px w-full bg-hairline-dark;
+  }
+
+  .hairline-light {
+    @apply h-px w-full bg-hairline-light;
+  }
+
+  /* Cursor Mark — the brand's signature device */
+  .cursor-mark {
+    @apply text-electric-cyan animate-cursor-blink inline-block;
+  }
+
+  /* Section spacing */
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 py-20 md:py-32;
+  }
+
+  .section-padding-sm {
+    @apply px-6 md:px-12 lg:px-20 py-12 md:py-20;
+  }
+
+  /* Container */
+  .container-wide {
+    @apply max-w-[1400px] mx-auto;
+  }
+
+  /* Caption style */
+  .caption {
+    @apply font-body text-caption uppercase tracking-wider text-cool-grey;
+  }
+
+  /* Technical/mono label */
+  .mono-label {
+    @apply font-mono text-technical uppercase tracking-wider text-cool-grey;
+  }
+
+  /* Glassmorphism Panel (Restored to Deep Navy) */
+  .glass-panel {
+    @apply bg-deep-navy border border-hairline-dark;
+  }
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-ink-navy;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-hairline-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-cool-grey;
+}
