@@ -31,7 +31,6 @@ export function Footer() {
               <li><Link href="/#work" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors">Work</Link></li>
               <li><Link href="/about" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors">About</Link></li>
               <li><a href="https://www.linkedin.com/in/md-tahsin-03949b334?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors">LinkedIn</a></li>
-              <li><a href="https://www.instagram.com/aibyfusion?igsh=MWZ3ZTFsdTVvcjhwNg==" target="_blank" rel="noopener noreferrer" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors">Instagram</a></li>
             </ul>
           </div>
         </div>
