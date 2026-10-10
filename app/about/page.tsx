@@ -1,128 +1,199 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: 'Md Tahsin — 18-year-old AI content creator based in New Delhi. Full end-to-end AI production, from concept to final cut.',
+  title: 'About — Md Tahsin',
+  description: 'Md Tahsin — AI Content Creator & Creative Technologist based in New Delhi. End-to-end AI advertising, video editing, and generative workflows.',
 };
 
-const tools = [
-  'Claude / ChatGPT',
-  'Google Flow (Veo 3.1) / Runway',
-  'Higgsfield / Freepik',
-  'Photoshop / DaVinci Resolve',
+const experience = [
+  {
+    role: 'Freelance AI Content Creator',
+    company: 'Self-Employed',
+    period: '9 months',
+    highlights: [
+      'Independently handle AI-generated video and image content end-to-end — concept, scripting, AI generation, and post-production for brand campaigns.',
+      'Build commercial campaigns and film concepts with Google Flow, Freepik, Higgsfield, and Kling, finished in Premiere Pro and DaVinci Resolve.',
+      'Self-taught the full production pipeline and built AI Fusion (@aibyfusion), a personal content brand with 10K+ followers and 1M+ views.',
+    ],
+  },
+  {
+    role: 'AI Image Generation Support',
+    company: 'Hairan Studio',
+    period: 'Client Engagement',
+    highlights: [
+      'Support Hairan Studio, an AI-native creative studio, with basic AI image generation for brand and product visuals.',
+      'Turned creative briefs into robust prompt architectures and delivered finished broadcast-grade visuals.',
+    ],
+  },
+  {
+    role: 'Video Editor',
+    company: 'Freelance',
+    period: '3 months',
+    highlights: [
+      'Hands-on freelance video editing experience, the foundational starting point that led into AI-generated advertising production.',
+      'Edited video in Premiere Pro, After Effects, and DaVinci Resolve, building the pacing, rhythm, and color grading skills now powering AI ad workflows.',
+    ],
+  },
 ];
 
-const projects = [
-  { name: 'Voltas AC', desc: 'AI-generated brand campaign' },
-  { name: 'Air Jordan (Nike)', desc: 'AI-generated shoe campaign' },
-  { name: 'Mama Earth Skin Care', desc: 'AI-generated brand campaign' },
-  { name: 'Kesar Bhog Ice Cream', desc: 'AI-generated brand campaign' },
+const toolCategories = [
+  {
+    category: 'Generative AI & Video Models',
+    items: ['Google Flow (Veo 3.1)', 'Kling', 'Wan', 'Nano Banana', 'Freepik', 'Higgsfield', 'Midjourney', 'Topaz Video AI', 'ElevenLabs', 'Suno'],
+  },
+  {
+    category: 'Post-Production & Video Editing',
+    items: ['DaVinci Resolve (Color & Fairlight)', 'Adobe Premiere Pro', 'Adobe After Effects', 'Adobe Photoshop'],
+  },
+  {
+    category: 'Reasoning & Script Development',
+    items: ['Claude', 'ChatGPT'],
+  },
+];
+
+const skills = [
+  {
+    title: 'Generative AI',
+    desc: 'Text-to-video, image-to-video, prompt engineering, multimodal AI workflows, AI workflow automation.',
+  },
+  {
+    title: 'Film & Visual Craft',
+    desc: 'AI filmmaking, brand films, creative direction, art direction, concept development, storyboarding, post-production, colour grading, sound design, visual storytelling.',
+  },
 ];
 
 export default function AboutPage() {
   return (
-    <article className="pt-32">
+    <article className="pt-32 pb-24">
       {/* Header */}
       <section className="section-padding pb-0" aria-label="Introduction">
-        <div className="container-wide max-w-3xl">
-          <span className="mono-label text-electric-cyan block mb-6">About</span>
-          <h1 className="font-display text-display-xl text-crisp-white mb-6">
+        <div className="container-wide max-w-4xl">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="mono-label text-electric-cyan">Profile</span>
+            <span className="text-cool-grey font-mono text-xs uppercase tracking-wider">· Curriculum Vitae</span>
+          </div>
+
+          <h1 className="font-display text-display-xl text-crisp-white mb-4">
             Md Tahsin<span className="cursor-mark">│</span>
           </h1>
-          <p className="font-display text-h2 text-cool-grey mb-2">
-            AI Content Creator
-          </p>
-          <p className="text-cool-grey text-sm mb-8">
-            18 · New Delhi, Saket, India
+
+          <p className="font-display text-2xl md:text-3xl text-electric-cyan mb-2 font-semibold">
+            AI Content Creator &amp; Creative Technologist
           </p>
 
-          <blockquote className="border-l-2 border-electric-cyan pl-6 my-10">
-            <p className="font-body text-xl text-crisp-white italic leading-relaxed">
+          <p className="text-cool-grey text-sm mb-6 font-mono">
+            New Delhi, Saket, India · <a href="mailto:shaikhtahsin84@gmail.com" className="text-crisp-white hover:text-electric-cyan transition-colors">shaikhtahsin84@gmail.com</a> · <a href="tel:+918406939132" className="text-crisp-white hover:text-electric-cyan transition-colors">+91 8406939132</a>
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4 mb-10">
+            <a
+              href="https://www.instagram.com/aibyfusion/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep-navy border border-electric-cyan/40 text-electric-cyan text-xs font-mono font-medium hover:bg-electric-cyan hover:text-ink-navy transition-all no-underline"
+            >
+              <span>Instagram (@aibyfusion)</span>
+              <span className="px-1.5 py-0.5 rounded bg-electric-cyan/20 text-[10px] font-bold">10K Followers ↗</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/md-tahsin-03949b334"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-deep-navy border border-hairline-dark text-cool-grey hover:text-crisp-white hover:border-hairline-light text-xs font-mono transition-all no-underline"
+            >
+              <span>LinkedIn Profile ↗</span>
+            </a>
+          </div>
+
+          <blockquote className="border-l-2 border-electric-cyan pl-6 my-10 py-1">
+            <p className="font-display text-xl md:text-2xl text-crisp-white italic leading-relaxed">
               &ldquo;From concept to final cut, powered entirely by AI.&rdquo;
             </p>
           </blockquote>
         </div>
       </section>
 
-      {/* Bio */}
+      {/* Bio Summary */}
       <section className="section-padding-sm" aria-label="Biography">
-        <div className="container-wide max-w-3xl">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="mono-label text-electric-cyan">Who I Am</span>
+        <div className="container-wide max-w-4xl">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="mono-label text-electric-cyan">Summary</span>
             <div className="flex-1 hairline" />
           </div>
-          <p className="text-crisp-white text-lg leading-relaxed mb-6">
-            I&apos;m genuinely passionate about AI content creation and digital media. I&apos;m someone who learns fast, adapts quickly, and puts in the work — I often spend hours refining a single AI prompt because I believe the smallest details create the biggest visual impact.
+          <p className="text-crisp-white text-lg leading-relaxed mb-4">
+            AI Content Creator with 9 months of freelance experience building end-to-end, AI-generated advertising — from concept and script to a fully polished, campaign-ready final cut.
+          </p>
+          <p className="text-cool-grey text-base leading-relaxed">
+            Self-taught across a full AI production pipeline (Google Flow, Freepik, Higgsfield, Photoshop, After Effects, Premiere Pro, DaVinci Resolve), with hands-on client-facing work at Hairan Studio, 3 months of freelance video editing, and a personal content brand, AI Fusion (@aibyfusion), focused on AI tools, ad creation, and high-retention social reels.
           </p>
         </div>
       </section>
 
-      <div className="container-wide max-w-3xl px-6 md:px-12 lg:px-20"><div className="hairline" /></div>
+      <div className="container-wide max-w-4xl px-6 md:px-12"><div className="hairline" /></div>
 
-      {/* Strength */}
-      <section className="section-padding-sm" aria-label="Strengths">
-        <div className="container-wide max-w-3xl">
+      {/* Experience Section */}
+      <section className="section-padding-sm" aria-label="Experience">
+        <div className="container-wide max-w-4xl">
           <div className="flex items-center gap-4 mb-8">
-            <span className="mono-label text-electric-cyan">Core Strength</span>
+            <span className="mono-label text-electric-cyan">Work Experience</span>
             <div className="flex-1 hairline" />
           </div>
-          <p className="text-crisp-white text-lg leading-relaxed">
-            End-to-end execution: I can take a project from concept to a polished, campaign-ready final product using AI.
-          </p>
-        </div>
-      </section>
 
-      <div className="container-wide max-w-3xl px-6 md:px-12 lg:px-20"><div className="hairline" /></div>
-
-      {/* Tools */}
-      <section className="section-padding-sm" aria-label="Tools and software">
-        <div className="container-wide max-w-3xl">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="mono-label text-electric-cyan">Tools &amp; Software</span>
-            <div className="flex-1 hairline" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {tools.map((tool) => (
+          <div className="space-y-8">
+            {experience.map((item) => (
               <div
-                key={tool}
-                className="p-4 rounded-lg border border-hairline-dark bg-deep-navy/50 hover:border-electric-cyan/30 transition-colors duration-300"
+                key={item.role + item.company}
+                className="p-6 md:p-8 rounded-2xl bg-deep-navy/60 border border-hairline-dark hover:border-hairline-light transition-colors"
               >
-                <span className="font-mono text-technical uppercase tracking-wider text-electric-cyan block mb-1">
-                  {tool.split(' / ')[0]}
-                </span>
-                {tool.includes('/') && (
-                  <span className="text-cool-grey text-sm">
-                    {tool.split(' / ').slice(1).join(' / ')}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                  <div>
+                    <h3 className="font-display text-xl text-crisp-white font-bold">{item.role}</h3>
+                    <span className="text-electric-cyan font-mono text-sm">{item.company}</span>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-cool-grey font-mono text-xs shrink-0 self-start sm:self-auto">
+                    {item.period}
                   </span>
-                )}
+                </div>
+                <ul className="space-y-2.5 text-cool-grey text-sm md:text-base leading-relaxed">
+                  {item.highlights.map((h, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="w-1.5 h-1.5 rounded-full bg-electric-cyan mt-2 shrink-0" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <div className="container-wide max-w-3xl px-6 md:px-12 lg:px-20"><div className="hairline" /></div>
+      <div className="container-wide max-w-4xl px-6 md:px-12"><div className="hairline" /></div>
 
-      {/* Portfolio Projects */}
-      <section className="section-padding-sm" aria-label="Portfolio projects">
-        <div className="container-wide max-w-3xl">
+      {/* Tools & Software */}
+      <section className="section-padding-sm" aria-label="Tools and software">
+        <div className="container-wide max-w-4xl">
           <div className="flex items-center gap-4 mb-8">
-            <span className="mono-label text-electric-cyan">Portfolio Projects</span>
+            <span className="mono-label text-electric-cyan">Tools &amp; Software Arsenal</span>
             <div className="flex-1 hairline" />
           </div>
-          <p className="text-cool-grey text-sm mb-6 italic">
-            Self-directed campaigns built to demonstrate end-to-end AI production capability (spec/portfolio work, not paid client engagements):
-          </p>
-          <div className="space-y-4">
-            {projects.map((project) => (
-              <div
-                key={project.name}
-                className="flex items-start gap-4 p-4 rounded-lg border border-hairline-dark bg-deep-navy/50"
-              >
-                <span className="w-2 h-2 rounded-full bg-electric-cyan mt-2 shrink-0" />
-                <div>
-                  <span className="font-display font-semibold text-crisp-white">{project.name}</span>
-                  <span className="text-cool-grey text-sm block">{project.desc}</span>
+
+          <div className="space-y-6">
+            {toolCategories.map((cat) => (
+              <div key={cat.category} className="p-6 rounded-xl bg-deep-navy/40 border border-hairline-dark">
+                <span className="font-mono text-xs uppercase tracking-wider text-electric-cyan block mb-4">
+                  {cat.category}
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {cat.items.map((tool) => (
+                    <span
+                      key={tool}
+                      className="px-3.5 py-1.5 rounded-lg bg-deep-navy border border-hairline-dark text-crisp-white font-mono text-xs hover:border-electric-cyan/40 transition-colors"
+                    >
+                      {tool}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -130,36 +201,101 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <div className="container-wide max-w-3xl px-6 md:px-12 lg:px-20"><div className="hairline" /></div>
+      <div className="container-wide max-w-4xl px-6 md:px-12"><div className="hairline" /></div>
 
-      {/* Education */}
-      <section className="section-padding-sm" aria-label="Education">
-        <div className="container-wide max-w-3xl">
+      {/* Skills & Disciplines */}
+      <section className="section-padding-sm" aria-label="Skills">
+        <div className="container-wide max-w-4xl">
           <div className="flex items-center gap-4 mb-8">
-            <span className="mono-label text-electric-cyan">Education</span>
+            <span className="mono-label text-electric-cyan">Skills &amp; Capabilities</span>
             <div className="flex-1 hairline" />
           </div>
-          <div className="p-4 rounded-lg border border-hairline-dark bg-deep-navy/50">
-            <span className="font-display font-semibold text-crisp-white block mb-1">
-              30-Hour Video Editing Course
-            </span>
-            <span className="text-cool-grey text-sm">Editing Skool (USA-based)</span>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {skills.map((s) => (
+              <div key={s.title} className="p-6 rounded-xl bg-deep-navy/40 border border-hairline-dark">
+                <h4 className="font-display text-lg text-crisp-white font-semibold mb-2">{s.title}</h4>
+                <p className="text-cool-grey text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="container-wide max-w-3xl px-6 md:px-12 lg:px-20"><div className="hairline" /></div>
+      <div className="container-wide max-w-4xl px-6 md:px-12"><div className="hairline" /></div>
 
-      {/* Career Goal */}
-      <section className="section-padding-sm" aria-label="Career goal">
-        <div className="container-wide max-w-3xl">
+      {/* Education & Certifications */}
+      <section className="section-padding-sm" aria-label="Education & Certifications">
+        <div className="container-wide max-w-4xl">
           <div className="flex items-center gap-4 mb-8">
-            <span className="mono-label text-electric-cyan">Career Goal</span>
+            <span className="mono-label text-electric-cyan">Education &amp; Certifications</span>
             <div className="flex-1 hairline" />
           </div>
-          <p className="text-crisp-white text-lg leading-relaxed">
-            Looking to join a top brand&apos;s AI content team. Open to both full-time and freelance opportunities.
-          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Certified Video Editing Course */}
+            <div className="p-6 rounded-xl border border-electric-cyan/30 bg-deep-navy/60">
+              <span className="mono-label text-[10px] text-electric-cyan block mb-2">USA Certification</span>
+              <h4 className="font-display font-bold text-crisp-white text-base mb-1">
+                Certified Video Editing Course
+              </h4>
+              <p className="text-cool-grey text-xs">Through Editing School — from USA</p>
+            </div>
+
+            {/* University Degree */}
+            <div className="p-6 rounded-xl border border-hairline-dark bg-deep-navy/40">
+              <span className="mono-label text-[10px] text-cool-grey block mb-2">Higher Education</span>
+              <h4 className="font-display font-bold text-crisp-white text-base mb-1">
+                Bachelor of Arts in Journalism &amp; Digital Media (BAFJDM)
+              </h4>
+              <p className="text-cool-grey text-xs">IGNOU — in progress</p>
+            </div>
+
+            {/* Claude 101 */}
+            <div className="p-6 rounded-xl border border-hairline-dark bg-deep-navy/40">
+              <span className="mono-label text-[10px] text-cool-grey block mb-2">AI Architecture</span>
+              <h4 className="font-display font-bold text-crisp-white text-base mb-1">
+                Claude 101
+              </h4>
+              <p className="text-cool-grey text-xs">Anthropic Certified</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="container-wide max-w-4xl px-6 md:px-12"><div className="hairline" /></div>
+
+      {/* Availability & Languages */}
+      <section className="section-padding-sm" aria-label="Availability">
+        <div className="container-wide max-w-4xl">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="mono-label text-electric-cyan">Availability &amp; Languages</span>
+            <div className="flex-1 hairline" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-xl bg-deep-navy/40 border border-hairline-dark">
+              <h4 className="font-display text-base text-crisp-white font-semibold mb-2">Open For Opportunities</h4>
+              <p className="text-cool-grey text-sm leading-relaxed mb-4">
+                Open to full-time roles and freelance/project-based work in AI content creation, AI advertising production, and digital media.
+              </p>
+              <Link
+                href="/#contact"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-electric-cyan hover:text-crisp-white transition-colors"
+              >
+                Get in touch →
+              </Link>
+            </div>
+
+            <div className="p-6 rounded-xl bg-deep-navy/40 border border-hairline-dark">
+              <h4 className="font-display text-base text-crisp-white font-semibold mb-2">Spoken &amp; Written Languages</h4>
+              <ul className="space-y-1.5 text-sm text-cool-grey font-mono">
+                <li><strong className="text-crisp-white">English:</strong> Professional Working Proficiency</li>
+                <li><strong className="text-crisp-white">Hindi:</strong> Native Speaker</li>
+                <li><strong className="text-crisp-white">Urdu:</strong> Fluent</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
     </article>

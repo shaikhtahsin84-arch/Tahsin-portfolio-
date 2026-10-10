@@ -18,11 +18,13 @@ export async function POST(req: Request) {
     }
 
     const { name, email, message } = parsed.data;
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    const accessKey =
+      process.env.WEB3FORMS_ACCESS_KEY ||
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      'f7933732-7984-40b5-8fa1-11517b4f6581';
 
-    if (!accessKey || accessKey === 'your_web3forms_key_here') {
+    if (!accessKey) {
       console.warn("Web3Forms Access Key not configured.");
-      // Return a 500 error to the frontend if the key is missing so the user sees something went wrong
       return NextResponse.json({ error: 'Setup incomplete' }, { status: 500 });
     }
 

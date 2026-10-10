@@ -8,7 +8,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com",
       "img-src 'self' data: https:",
       "font-src 'self' data: https://fonts.gstatic.com https://cdn.fontshare.com",
-      "connect-src 'self'",
+      "connect-src 'self' https://api.web3forms.com",
       "media-src 'self'",
       "frame-src 'none'",
     ].join('; '),

@@ -1,5 +1,6 @@
 import { Hero } from '@/components/Hero';
 import { ProjectGrid } from '@/components/ProjectGrid';
+import { ViralShowcase } from '@/components/ViralShowcase';
 import { ImpactStats } from '@/components/ImpactStats';
 import { Contact } from '@/components/Contact';
 import Link from 'next/link';
@@ -14,12 +15,60 @@ const projects = [
     ratio: '16:9' as const,
   },
   {
+    id: 'hairan-studio',
+    title: 'Hairan Studio',
+    slug: 'hairan-studio',
+    client: 'Hairan Studio',
+    thumbnail: '/images/hairan-studio/chaos-thumb.jpg',
+    ratio: '16:9' as const,
+  },
+  {
+    id: 'the-sleep-company',
+    title: 'The Sleep Company',
+    slug: 'the-sleep-company',
+    client: 'The Sleep Company',
+    thumbnail: '/images/sleep-company/wake-up-thumb.jpg',
+    ratio: '9:16' as const,
+  },
+  {
+    id: 'cadbury',
+    title: 'Cadbury Dairy Milk',
+    slug: 'cadbury',
+    client: 'Cadbury',
+    thumbnail: '/images/cadbury/char-female-01.png',
+    ratio: '9:16' as const,
+  },
+  {
+    id: 'nescafe',
+    title: 'Nescafé — Morning Momentum',
+    slug: 'nescafe',
+    client: 'Nescafé',
+    thumbnail: '/images/nescafe/male-lead-master.png',
+    ratio: '9:16' as const,
+  },
+  {
     id: 'voltas',
     title: 'Voltas',
     slug: 'voltas',
     client: 'Voltas (Tata)',
     thumbnail: '/images/voltas/ac.jpeg',
     ratio: '16:9' as const,
+  },
+  {
+    id: 'zara',
+    title: 'Zara — After Dark',
+    slug: 'zara',
+    client: 'Zara',
+    thumbnail: '/images/zara/character-master.png',
+    ratio: '9:16' as const,
+  },
+  {
+    id: 'mr-malhotra',
+    title: 'Mr. Malhotra — The Legacy',
+    slug: 'mr-malhotra',
+    client: 'Spec Film',
+    thumbnail: '/images/mr-malhotra/mr-malhotra.png',
+    ratio: '9:16' as const,
   },
   {
     id: 'mama-earth',
@@ -50,6 +99,9 @@ export default function Home() {
           <ProjectGrid projects={projects} />
         </section>
         
+        {/* Viral Videos Showcase (1 Million+ Views) */}
+        <ViralShowcase />
+
         {/* Impact Stats */}
         <ImpactStats />
 
@@ -67,7 +119,7 @@ export default function Home() {
               </p>
 
               <p className="text-cool-grey text-lg leading-relaxed mb-8">
-                I&apos;m genuinely passionate about AI content creation and digital media. I often spend hours refining a single AI prompt because I believe the smallest details create the biggest visual impact.
+                I&apos;m genuinely passionate about AI content creation and digital media. From high-fashion brand commercials to viral reels crossing 1 Million+ views, I refine every prompt and motion cut because the smallest details create the biggest visual impact.
               </p>
 
               <Link

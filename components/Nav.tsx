@@ -6,9 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
   { href: '/#work', label: 'Work' },
+  { href: '/#viral-videos', label: 'Viral (1M+)' },
   { href: '/about', label: 'About' },
   { href: '/#contact', label: 'Contact' },
 ];
+
+const instagramUrl = 'https://www.instagram.com/aibyfusion/';
 
 export function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -43,6 +46,15 @@ export function Nav() {
               </li>
             ))}
           </ul>
+          <a
+            href={instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 border border-electric-cyan/40 text-electric-cyan rounded-full font-body text-[13px] font-medium hover:bg-electric-cyan hover:text-ink-navy transition-all duration-300 no-underline"
+          >
+            <span>Instagram</span>
+            <span className="px-1.5 py-0.5 rounded-full bg-electric-cyan/20 text-[10px] font-mono font-bold">10K</span>
+          </a>
           <Link href="/#contact" className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-crisp-white text-bg-primary rounded-full font-body text-[13px] font-semibold hover:bg-electric-cyan transition-colors duration-300 group no-underline">
             Get in Touch
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="stroke-current transition-transform duration-200 group-hover:translate-x-1">
@@ -88,6 +100,18 @@ export function Nav() {
                   {i < navLinks.length - 1 && <div className="hairline" />}
                 </li>
               ))}
+              <li>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="block py-4 font-display text-h2 text-crisp-white hover:text-electric-cyan transition-colors no-underline"
+                >
+                  <span className="mono-label mr-3">05</span>
+                  Instagram (@aibyfusion · 10K) ↗
+                </a>
+              </li>
             </ul>
           </motion.div>
         )}

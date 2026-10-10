@@ -30,6 +30,7 @@ export function Footer() {
             <ul className="flex flex-col gap-3">
               <li><Link href="/#work" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors">Work</Link></li>
               <li><Link href="/about" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors">About</Link></li>
+              <li><a href="https://www.instagram.com/aibyfusion/" target="_blank" rel="noopener noreferrer" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors flex items-center gap-1.5"><span>Instagram (@aibyfusion)</span><span className="text-[10px] px-1.5 py-0.5 rounded bg-electric-cyan/15 text-electric-cyan font-mono font-bold">10K</span></a></li>
               <li><a href="https://www.linkedin.com/in/md-tahsin-03949b334?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" className="text-cool-grey hover:text-electric-cyan text-sm transition-colors">LinkedIn</a></li>
             </ul>
           </div>

@@ -96,14 +96,18 @@ export function Hero() {
       )}
 
       <div className="container-wide relative z-10">
-        {/* Role label */}
+        {/* Role label & Viral badge */}
         <motion.div
           initial={prefersReduced ? {} : { opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-8"
+          className="mb-8 flex flex-wrap items-center gap-3"
         >
           <span className="mono-label text-electric-cyan">FULL END-TO-END AI PRODUCTION</span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-electric-cyan/10 border border-electric-cyan/30 text-electric-cyan text-xs font-mono font-semibold tracking-wider uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-electric-cyan animate-pulse" />
+            1M+ Viral Video Views
+          </span>
         </motion.div>
 
         {/* Main headline */}
@@ -127,6 +131,18 @@ export function Hero() {
             View the Work
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="stroke-current transition-transform duration-200 group-hover:translate-x-1">
               <path d="M2.5 7h9m-4-4 4 4-4 4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/aibyfusion/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-electric-cyan/60 text-electric-cyan rounded-full font-body font-semibold hover:bg-electric-cyan hover:text-bg-primary transition-colors duration-300 group no-underline"
+          >
+            <span>Instagram (@aibyfusion)</span>
+            <span className="px-2 py-0.5 rounded-full bg-electric-cyan/20 text-xs font-mono font-bold">10K</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="stroke-current transition-transform duration-200 group-hover:translate-x-1">
+              <path d="M4 10l6-6M6 4h4v4" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
         </motion.div>

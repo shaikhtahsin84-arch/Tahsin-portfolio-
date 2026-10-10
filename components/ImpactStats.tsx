@@ -5,24 +5,24 @@ import { useRef } from 'react';
 
 const stats = [
   {
-    value: '68%',
-    label: 'Cost Reduction',
-    description: 'Drastic reduction in production overhead.',
+    value: '1M+',
+    label: 'Viral Reel Views',
+    description: 'Breakthrough viral hit on Instagram reels.',
   },
   {
-    value: '87.5%',
-    label: 'Time Reduction',
-    description: 'Accelerated time-to-market for campaigns.',
+    value: '10K+',
+    label: 'Instagram Followers',
+    description: 'Dedicated audience on @aibyfusion.',
   },
   {
-    value: '20X',
-    label: 'Content Volume',
-    description: 'Scale content without sacrificing craft.',
+    value: '10K',
+    label: 'Avg. Reel Reach',
+    description: 'Consistent reach across DaVinci Resolve edits.',
   },
   {
     value: '100%',
-    label: 'AI-Driven',
-    description: 'From concept to final cut.',
+    label: 'End-to-End Execution',
+    description: 'From concept prompt to final polished cut.',
   },
 ];
 
