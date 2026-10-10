@@ -83,7 +83,7 @@ export default function AboutPage() {
           </p>
 
           <p className="text-cool-grey text-sm mb-6 font-mono">
-            New Delhi, Saket, India · <a href="mailto:shaikhtahsin84@gmail.com" className="text-crisp-white hover:text-electric-cyan transition-colors">shaikhtahsin84@gmail.com</a> · <a href="tel:+918406939132" className="text-crisp-white hover:text-electric-cyan transition-colors">+91 8406939132</a>
+            New Delhi, India · <a href="mailto:shaikhtahsin84@gmail.com" className="text-crisp-white hover:text-electric-cyan transition-colors">shaikhtahsin84@gmail.com</a> · <a href="tel:+918406939132" className="text-crisp-white hover:text-electric-cyan transition-colors">+91 8406939132</a>
           </p>
 
           <div className="flex flex-wrap items-center gap-4 mb-10">
@@ -248,7 +248,7 @@ export default function AboutPage() {
               <h4 className="font-display font-bold text-crisp-white text-base mb-1">
                 Bachelor of Arts in Journalism &amp; Digital Media (BAFJDM)
               </h4>
-              <p className="text-cool-grey text-xs">IGNOU — in progress</p>
+              <p className="text-cool-grey text-xs">IGNOU</p>
             </div>
 
             {/* Claude 101 */}

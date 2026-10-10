@@ -1,6 +1,5 @@
 import { Hero } from '@/components/Hero';
 import { ProjectGrid } from '@/components/ProjectGrid';
-import { ViralShowcase } from '@/components/ViralShowcase';
 import { ImpactStats } from '@/components/ImpactStats';
 import { Contact } from '@/components/Contact';
 import Link from 'next/link';
@@ -99,9 +98,6 @@ export default function Home() {
           <ProjectGrid projects={projects} />
         </section>
         
-        {/* Viral Videos Showcase (1 Million+ Views) */}
-        <ViralShowcase />
-
         {/* Impact Stats */}
         <ImpactStats />
 

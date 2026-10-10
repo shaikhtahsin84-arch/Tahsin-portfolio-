@@ -1,12 +1,8 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ImageGallery } from '@/components/ImageGallery';
-import { AssetViewer } from '@/components/AssetViewer';
-import type { AssetViewerItem } from '@/components/AssetViewer';
 import type { Project } from '@/lib/projects';
 
 interface Props {
@@ -18,13 +14,6 @@ interface Props {
 export function CaseStudyContent({ project, prev, next }: Props) {
   // Tabs for Kesar Bhog (Version A / Version B)
   const [activeVersionTab, setActiveVersionTab] = useState<number>(0);
-
-  // Tabs for Nike (Carousel / Static / Video)
-  const [activeNikeTab, setActiveNikeTab] = useState<'carousel' | 'static' | 'video'>('carousel');
-  const [activeNikeVariant, setActiveNikeVariant] = useState<number>(0);
-
-  // Lightbox state
-  const [viewerItem, setViewerItem] = useState<AssetViewerItem[] | null>(null);
 
   // Main film audio state
   const [isFilmSoundOn, setIsFilmSoundOn] = useState<boolean>(false);
@@ -44,6 +33,11 @@ export function CaseStudyContent({ project, prev, next }: Props) {
     project.heroImage ||
     project.thumbnail ||
     (project.videos && project.videos.length > 0 ? project.videos[0].poster : undefined);
+
+  const projectVideos =
+    project.slug === 'nike' && project.videoVariants
+      ? project.videoVariants
+      : project.videos || [];
 
   return (
     <article className="min-h-screen bg-bg-primary text-crisp-white">
@@ -207,7 +201,7 @@ export function CaseStudyContent({ project, prev, next }: Props) {
         </section>
       )}
 
-      {/* ─── 4. PROJECT FORMATS & PRODUCTION DELIVERABLES ─── */}
+      {/* ─── 4. FINAL OUTPUTS ─── */}
 
       {/* A. KESAR BHOG: Version A vs Version B */}
       {project.slug === 'kesar-bhog' && project.versions && (
@@ -235,185 +229,67 @@ export function CaseStudyContent({ project, prev, next }: Props) {
               </div>
             </div>
 
-            {project.versions[activeVersionTab] && (
-              <div className="space-y-16">
-                <div>
-                  <h4 className="mono-label text-cool-grey mb-6">
-                    {project.versions[activeVersionTab].label} — Character Sheets &amp; Generative Assets
-                  </h4>
-                  <ImageGallery assets={project.versions[activeVersionTab].assets} columns={3} />
+            {project.versions[activeVersionTab]?.videos.length > 0 && (
+              <div className="pt-8">
+                <h4 className="mono-label text-electric-cyan mb-6">
+                  {project.versions[activeVersionTab].label} — Final Output Film
+                </h4>
+                <div className="max-w-md mx-auto aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-hairline-dark">
+                  <video
+                    src={project.versions[activeVersionTab].videos[0].src}
+                    poster={project.versions[activeVersionTab].videos[0].poster}
+                    controls
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-
-                {project.versions[activeVersionTab].videos.length > 0 && (
-                  <div className="pt-8 border-t border-hairline-dark">
-                    <h4 className="mono-label text-electric-cyan mb-6">
-                      {project.versions[activeVersionTab].label} — Final Output Film
-                    </h4>
-                    <div className="max-w-md mx-auto aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-hairline-dark">
-                      <video
-                        src={project.versions[activeVersionTab].videos[0].src}
-                        poster={project.versions[activeVersionTab].videos[0].poster}
-                        controls
-                        playsInline
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                )}
               </div>
             )}
           </div>
         </section>
       )}
 
-      {/* B. NIKE: 3 Format Deliverables (Carousel, Static, Video) */}
-      {project.slug === 'nike' && (
-        <section className="px-6 py-16 md:px-12 lg:px-16" aria-label="Nike Multi-Format Deliverables">
+      {/* B. NIKE: Final Video Spots Only */}
+      {project.slug === 'nike' && project.videoVariants && (
+        <section className="px-6 py-16 md:px-12 lg:px-16" aria-label="Final Output Films">
           <div className="mx-auto w-full max-w-[1600px]">
-            {/* Concept Development */}
-            {project.conceptAssets && (
-              <div className="mb-20">
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="mono-label text-electric-cyan">01. Concept Development &amp; Sheets</span>
-                  <div className="flex-1 hairline" />
-                </div>
-                <ImageGallery assets={project.conceptAssets} columns={2} />
-              </div>
-            )}
+            <div className="flex items-center gap-4 mb-8">
+              <span className="mono-label text-electric-cyan">Final Output Films</span>
+              <div className="flex-1 hairline" />
+            </div>
 
-            {/* Formats */}
-            <div className="border-t border-hairline-dark pt-12">
-              <div className="flex items-center gap-4 mb-8">
-                <span className="mono-label text-electric-cyan">02. Format Executions</span>
-                <div className="flex-1 hairline" />
-              </div>
-
-              <div className="flex flex-wrap gap-3 mb-10 border-b border-hairline-dark pb-6">
-                <button
-                  onClick={() => { setActiveNikeTab('carousel'); setActiveNikeVariant(0); }}
-                  className={`px-6 py-3 rounded-full font-mono text-xs uppercase tracking-wider transition-all ${
-                    activeNikeTab === 'carousel'
-                      ? 'bg-electric-cyan text-ink-navy font-bold'
-                      : 'bg-deep-navy text-cool-grey hover:text-crisp-white border border-hairline-dark'
-                  }`}
-                >
-                  Carousel Ads (3 Sets)
-                </button>
-                <button
-                  onClick={() => { setActiveNikeTab('static'); setActiveNikeVariant(0); }}
-                  className={`px-6 py-3 rounded-full font-mono text-xs uppercase tracking-wider transition-all ${
-                    activeNikeTab === 'static'
-                      ? 'bg-electric-cyan text-ink-navy font-bold'
-                      : 'bg-deep-navy text-cool-grey hover:text-crisp-white border border-hairline-dark'
-                  }`}
-                >
-                  Static Campaign Ads
-                </button>
-                <button
-                  onClick={() => { setActiveNikeTab('video'); setActiveNikeVariant(0); }}
-                  className={`px-6 py-3 rounded-full font-mono text-xs uppercase tracking-wider transition-all ${
-                    activeNikeTab === 'video'
-                      ? 'bg-electric-cyan text-ink-navy font-bold'
-                      : 'bg-deep-navy text-cool-grey hover:text-crisp-white border border-hairline-dark'
-                  }`}
-                >
-                  Video Spots (3 Executions)
-                </button>
-              </div>
-
-              {activeNikeTab === 'carousel' && project.carouselVariants && (
-                <div>
-                  <div className="flex gap-2 mb-8">
-                    {project.carouselVariants.map((v, i) => (
-                      <button
-                        key={v.label}
-                        onClick={() => setActiveNikeVariant(i)}
-                        className={`px-4 py-2 rounded-lg font-mono text-xs uppercase ${
-                          activeNikeVariant === i
-                            ? 'bg-crisp-white text-ink-navy font-bold'
-                            : 'bg-deep-navy/80 text-cool-grey border border-hairline-dark'
-                        }`}
-                      >
-                        {v.label}
-                      </button>
-                    ))}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {project.videoVariants.map((vid) => (
+                <div key={vid.src} className="flex flex-col gap-3">
+                  <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-hairline-dark">
+                    <video src={vid.src} poster={vid.poster} controls playsInline className="w-full h-full object-cover" />
                   </div>
-                  <ImageGallery assets={project.carouselVariants[activeNikeVariant].images} columns={3} />
+                  <span className="font-mono text-xs text-cool-grey">{vid.title}</span>
                 </div>
-              )}
-
-              {activeNikeTab === 'static' && project.staticVariants && (
-                <div>
-                  <div className="flex gap-2 mb-8">
-                    {project.staticVariants.map((v, i) => (
-                      <button
-                        key={v.label}
-                        onClick={() => setActiveNikeVariant(i)}
-                        className={`px-4 py-2 rounded-lg font-mono text-xs uppercase ${
-                          activeNikeVariant === i
-                            ? 'bg-crisp-white text-ink-navy font-bold'
-                            : 'bg-deep-navy/80 text-cool-grey border border-hairline-dark'
-                        }`}
-                      >
-                        {v.label}
-                      </button>
-                    ))}
-                  </div>
-                  <ImageGallery assets={project.staticVariants[activeNikeVariant].images} columns={3} />
-                </div>
-              )}
-
-              {activeNikeTab === 'video' && project.videoVariants && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {project.videoVariants.map((vid) => (
-                    <div key={vid.src} className="flex flex-col gap-3">
-                      <div className="aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-hairline-dark">
-                        <video src={vid.src} poster={vid.poster} controls playsInline className="w-full h-full object-cover" />
-                      </div>
-                      <span className="font-mono text-xs text-cool-grey">{vid.title}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
+              ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* C. GENERAL PROJECTS: Production Assets & Film Gallery */}
-      {project.slug !== 'kesar-bhog' && project.slug !== 'nike' && (
-        <section className="px-6 py-16 md:px-12 lg:px-16" aria-label="Production Assets">
-          <div className="mx-auto w-full max-w-[1600px] space-y-20">
-            {/* Multiple Video Executions (Hairan Studio, Sleep Company, etc.) */}
-            {project.videos && project.videos.length > 1 && (
-              <div>
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="mono-label text-electric-cyan">Film Executions &amp; Commercial Spots</span>
-                  <div className="flex-1 hairline" />
+      {/* C. GENERAL PROJECTS: Final Output Films Only */}
+      {project.slug !== 'kesar-bhog' && project.slug !== 'nike' && projectVideos.length > 1 && (
+        <section className="px-6 py-16 md:px-12 lg:px-16" aria-label="Final Output Films">
+          <div className="mx-auto w-full max-w-[1600px]">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="mono-label text-electric-cyan">Final Output Films</span>
+              <div className="flex-1 hairline" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {projectVideos.map((vid) => (
+                <div key={vid.src} className="flex flex-col gap-3">
+                  <div className={`rounded-2xl overflow-hidden bg-black border border-hairline-dark ${vid.ratio === '16:9' ? 'aspect-video' : 'aspect-[9/16]'}`}>
+                    <video src={vid.src} poster={vid.poster} controls playsInline className="w-full h-full object-cover" />
+                  </div>
+                  <span className="font-mono text-xs text-crisp-white font-medium">{vid.title}</span>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {project.videos.map((vid) => (
-                    <div key={vid.src} className="flex flex-col gap-3">
-                      <div className={`rounded-2xl overflow-hidden bg-black border border-hairline-dark ${vid.ratio === '16:9' ? 'aspect-video' : 'aspect-[9/16]'}`}>
-                        <video src={vid.src} poster={vid.poster} controls playsInline className="w-full h-full object-cover" />
-                      </div>
-                      <span className="font-mono text-xs text-crisp-white font-medium">{vid.title}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Supporting Image Assets */}
-            {project.assets && project.assets.length > 0 && (
-              <div>
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="mono-label text-electric-cyan">Production Assets, Plates &amp; Concept Art</span>
-                  <div className="flex-1 hairline" />
-                </div>
-                <ImageGallery assets={project.assets} columns={3} />
-              </div>
-            )}
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -479,15 +355,6 @@ export function CaseStudyContent({ project, prev, next }: Props) {
             </Link>
           </section>
         </div>
-      )}
-
-      {/* Lightbox / AssetViewer */}
-      {viewerItem && (
-        <AssetViewer
-          items={viewerItem}
-          initialIndex={0}
-          onClose={() => setViewerItem(null)}
-        />
       )}
     </article>
   );
