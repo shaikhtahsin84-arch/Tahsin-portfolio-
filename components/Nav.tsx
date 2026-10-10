@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
   { href: '/#work', label: 'Work' },
-  { href: '/#viral-videos', label: 'Viral (1M+)' },
   { href: '/about', label: 'About' },
   { href: '/#contact', label: 'Contact' },
 ];
@@ -108,7 +107,7 @@ export function Nav() {
                   onClick={() => setMobileOpen(false)}
                   className="block py-4 font-display text-h2 text-crisp-white hover:text-electric-cyan transition-colors no-underline"
                 >
-                  <span className="mono-label mr-3">05</span>
+                  <span className="mono-label mr-3">04</span>
                   Instagram (@aibyfusion · 10K) ↗
                 </a>
               </li>

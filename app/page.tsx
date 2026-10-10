@@ -10,8 +10,8 @@ const projects = [
     title: 'Nike — Air Jordan',
     slug: 'nike',
     client: 'Air Jordan',
-    thumbnail: '/images/nike/assets/product-sheet.png',
-    ratio: '16:9' as const,
+    thumbnail: '/images/nike/video-1-thumb-5s.jpg',
+    ratio: '9:16' as const,
   },
   {
     id: 'hairan-studio',
@@ -34,7 +34,7 @@ const projects = [
     title: 'Cadbury Dairy Milk',
     slug: 'cadbury',
     client: 'Cadbury',
-    thumbnail: '/images/cadbury/char-female-01.png',
+    thumbnail: '/images/cadbury/video-thumb.jpg',
     ratio: '9:16' as const,
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     title: 'Nescafé — Morning Momentum',
     slug: 'nescafe',
     client: 'Nescafé',
-    thumbnail: '/images/nescafe/male-lead-master.png',
+    thumbnail: '/images/nescafe/video-thumb.jpg',
     ratio: '9:16' as const,
   },
   {
@@ -50,7 +50,7 @@ const projects = [
     title: 'Voltas',
     slug: 'voltas',
     client: 'Voltas (Tata)',
-    thumbnail: '/images/voltas/ac.jpeg',
+    thumbnail: '/images/voltas/video-thumb-5s.jpg',
     ratio: '16:9' as const,
   },
   {
@@ -58,7 +58,7 @@ const projects = [
     title: 'Zara — After Dark',
     slug: 'zara',
     client: 'Zara',
-    thumbnail: '/images/zara/character-master.png',
+    thumbnail: '/images/zara/video-thumb.jpg',
     ratio: '9:16' as const,
   },
   {
@@ -66,7 +66,7 @@ const projects = [
     title: 'Mr. Malhotra — The Legacy',
     slug: 'mr-malhotra',
     client: 'Spec Film',
-    thumbnail: '/images/mr-malhotra/mr-malhotra.png',
+    thumbnail: '/images/mr-malhotra/video-thumb.jpg',
     ratio: '9:16' as const,
   },
   {
@@ -74,7 +74,7 @@ const projects = [
     title: 'Mama Earth',
     slug: 'mama-earth',
     client: 'Mamaearth',
-    thumbnail: '/images/mama-earth/mama-earth.png',
+    thumbnail: '/images/mama-earth/video-thumb-5s.jpg',
     ratio: '9:16' as const,
   },
   {
@@ -82,7 +82,7 @@ const projects = [
     title: 'Kesar Bhog',
     slug: 'kesar-bhog',
     client: "Kwality Wall's",
-    thumbnail: '/images/kesar-bhog/a/product-sheet.png',
+    thumbnail: '/images/kesar-bhog/video-v1-thumb-5s.jpg',
     ratio: '9:16' as const,
   },
 ];

@@ -44,16 +44,29 @@ export function CaseStudyContent({ project, prev, next }: Props) {
       {/* ─── 1. FULL-BLEED IMMERSIVE HERO (Matching Saklain / Neevi AI) ─── */}
       <section className="relative h-[85svh] lg:h-[100svh] w-full overflow-hidden bg-black">
         {primaryVideo ? (
-          <video
-            src={primaryVideo}
-            poster={primaryPoster}
-            muted
-            loop
-            playsInline
-            autoPlay
-            preload="metadata"
-            className="h-full w-full object-cover"
-          />
+          <>
+            {project.ratio === '9:16' && (
+              <video
+                src={primaryVideo}
+                muted
+                loop
+                playsInline
+                autoPlay
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover blur-3xl opacity-25 scale-105"
+              />
+            )}
+            <video
+              src={primaryVideo}
+              poster={primaryPoster}
+              muted
+              loop
+              playsInline
+              autoPlay
+              preload="metadata"
+              className={project.ratio === '9:16' ? 'relative z-10 h-full w-full object-contain mx-auto' : 'h-full w-full object-cover'}
+            />
+          </>
         ) : (
           <div className="relative h-full w-full">
             <Image
@@ -61,7 +74,7 @@ export function CaseStudyContent({ project, prev, next }: Props) {
               alt={project.name}
               fill
               priority
-              className="object-cover"
+              className={project.ratio === '9:16' ? 'object-contain' : 'object-cover'}
             />
           </div>
         )}
@@ -173,8 +186,32 @@ export function CaseStudyContent({ project, prev, next }: Props) {
 
       {/* ─── 3. CINEMATIC MAIN FILM VIEWER WITH SOUND TOGGLE ─── */}
       {primaryVideo && (
-        <section className="relative min-h-[60svh] lg:h-[95svh] w-full overflow-hidden bg-black flex items-center justify-center my-12" aria-label="Main Film Presentation">
-          <div className="absolute inset-0 flex items-center justify-center">
+        <section className="px-6 py-12 md:px-12 lg:px-16" aria-label="Main Film Presentation">
+          <div className="mx-auto w-full max-w-[1600px] mb-6 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="mono-label text-electric-cyan">Final Output Film</span>
+              <span className="text-cool-grey font-mono text-xs">·</span>
+              <span className="text-cool-grey font-mono text-xs">
+                {project.ratio === '9:16' ? '9:16 Vertical Cut' : '16:9 Master Cut'}
+              </span>
+            </div>
+            <span className="font-mono text-xs text-cool-grey hidden sm:inline">
+              Cinematic Audio Available
+            </span>
+          </div>
+
+          <div className="relative min-h-[60svh] lg:h-[95svh] w-full overflow-hidden rounded-2xl bg-black border border-hairline-dark flex items-center justify-center">
+            {project.ratio === '9:16' && (
+              <video
+                src={primaryVideo}
+                muted
+                loop
+                playsInline
+                autoPlay
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover blur-3xl opacity-25 scale-105"
+              />
+            )}
             <video
               ref={filmVideoRef}
               src={primaryVideo}
@@ -184,20 +221,20 @@ export function CaseStudyContent({ project, prev, next }: Props) {
               playsInline
               autoPlay
               controls
-              className="h-full w-full object-contain"
+              className="relative z-10 h-full w-full object-contain"
             />
-          </div>
 
-          {/* Sound Toggle Control (Saklain style) */}
-          <button
-            type="button"
-            onClick={toggleFilmSound}
-            aria-pressed={isFilmSoundOn}
-            className="absolute bottom-8 right-6 md:right-12 z-30 font-mono flex items-center gap-2.5 text-xs text-crisp-white bg-black/70 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 hover:border-electric-cyan hover:text-electric-cyan transition-all"
-          >
-            <span className="w-2 h-2 rounded-full bg-electric-cyan" />
-            {isFilmSoundOn ? 'Sound On' : 'Sound Off'}
-          </button>
+            {/* Sound Toggle Control (Saklain style) */}
+            <button
+              type="button"
+              onClick={toggleFilmSound}
+              aria-pressed={isFilmSoundOn}
+              className="absolute bottom-6 right-6 md:right-8 z-30 font-mono flex items-center gap-2.5 text-xs text-crisp-white bg-black/80 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 hover:border-electric-cyan hover:text-electric-cyan transition-all"
+            >
+              <span className="w-2 h-2 rounded-full bg-electric-cyan" />
+              {isFilmSoundOn ? 'Sound On' : 'Sound Off'}
+            </button>
+          </div>
         </section>
       )}
 
@@ -280,7 +317,7 @@ export function CaseStudyContent({ project, prev, next }: Props) {
               <span className="mono-label text-electric-cyan">Final Output Films</span>
               <div className="flex-1 hairline" />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
               {projectVideos.map((vid) => (
                 <div key={vid.src} className="flex flex-col gap-3">
                   <div className={`rounded-2xl overflow-hidden bg-black border border-hairline-dark ${vid.ratio === '16:9' ? 'aspect-video' : 'aspect-[9/16]'}`}>
